@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-10-01
+  sales: 1
+  product: one
+
+two:
+  date: 2017-10-01
+  sales: 1
+  product: two

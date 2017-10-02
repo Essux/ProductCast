@@ -1,0 +1,21 @@
+<h1>Carga de archivos</h1>
+
+<p>Cargue un archivo .csv </p>
+
+<%= form_tag({:action => :done}, multipart: true) do %>
+
+    <% if :file.nil? %>
+    <div id="error_explanation">
+        <ul>
+        No se seleccionó ningún archivo
+        </ul>
+    </div>
+    <% end %>
+
+
+  <%= file_field_tag :file %>
+  <%= submit_tag "Subir" %>
+<% end %>
+
+<br>
+<%= link_to 'Inicio', root_path%>
