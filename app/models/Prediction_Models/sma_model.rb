@@ -20,7 +20,7 @@ class SMA_Model < Model
     end
 
     if historical_data.num_of_records < parameters[:N]
-      rise ParameterError, [
+      raise ParameterError, [
              "El parametro N no puede ser mayor que el periodo de datos",
              "historicos seleccionados"
            ].join(" ")
