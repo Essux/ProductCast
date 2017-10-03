@@ -1,0 +1,17 @@
+<h2>Productos</h2>
+
+<table>
+    <tr>
+        <th> Producto </th>
+    <tr>
+
+    <% @products.each do |product| %>
+        <tr>
+            <td><%= product.name %>
+            <td><%= link_to 'Ver', product_path(product) %>
+        </tr>
+    <% end %>
+</table>
+
+<br>
+<%= link_to 'Inicio', root_path%>

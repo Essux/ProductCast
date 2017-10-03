@@ -1,0 +1,19 @@
+<h1>
+<%= @product.name %>
+</h1>
+
+<h2>Registros</h2>
+
+<table>
+    <tr>
+        <th>Fecha</th>
+        <th>Ventas</th>
+    </tr>
+
+<% @product.records.each do |record| %>
+    <tr>
+        <td><%= record.date %></td>
+        <td><%= record.sales %></td>
+    </tr>
+<% end %>
+</table>
