@@ -1,0 +1,2 @@
+class ParameterError < StandardError
+end
