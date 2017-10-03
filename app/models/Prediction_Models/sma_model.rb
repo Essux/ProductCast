@@ -8,7 +8,7 @@ require 'date'
 class SMA_Model < Model
   def initialize(n, model_id, name)
     parameters = { :N => n}
-    super(model_id, name; parameters)
+    super(model_id, name, parameters)
   end
 
   def run(historical_data, num_of_predictions)
