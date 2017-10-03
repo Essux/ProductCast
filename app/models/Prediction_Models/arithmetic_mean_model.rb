@@ -3,8 +3,6 @@ require_relative './../Data/historical_data'
 require_relative './../Data/predicted_data'
 require 'date'
 
-puts "Arithmetic_mean_model loaded"
-
 class Arithmetic_mean_model < Model
     def initialize(model_id, name)
         parameters = Hash.new

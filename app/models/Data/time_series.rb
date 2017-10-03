@@ -1,4 +1,3 @@
-puts "Time_series loaded"
 
 class Time_series
     #The seasonality value of a time series without seasonality

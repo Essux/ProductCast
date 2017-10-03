@@ -1,8 +1,6 @@
 require_relative './../Prediction_Models/model'
 require_relative './time_series'
 
-puts "Predicted_data loaded"
-
 class Predicted_data < Time_series
     attr_reader :model
     attr_accessor :num_of_predictions

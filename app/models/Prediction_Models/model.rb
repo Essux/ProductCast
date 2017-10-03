@@ -1,7 +1,5 @@
 require_relative './../Data/time_series'
 
-puts "Model loaded"
-
 class Model
     attr_reader :model_id, :name
     attr_accessor :parameters
