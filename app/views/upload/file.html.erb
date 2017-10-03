@@ -4,14 +4,6 @@
 
 <%= form_tag({:action => :done}, multipart: true) do %>
 
-    <% if :file.nil? %>
-    <div id="error_explanation">
-        <ul>
-        No se seleccionó ningún archivo
-        </ul>
-    </div>
-    <% end %>
-
 
   <%= file_field_tag :file %>
   <%= submit_tag "Subir" %>

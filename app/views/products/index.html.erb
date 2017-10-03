@@ -8,6 +8,7 @@
     <% @products.each do |product| %>
         <tr>
             <td><%= product.name %>
+            <td><%= link_to 'Ver', product_path(product) %>
         </tr>
     <% end %>
 </table>
