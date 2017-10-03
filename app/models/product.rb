@@ -4,6 +4,8 @@ class Product < ApplicationRecord
     has_many :records
     validates :name, presence: true, length: {in: 4..100}
 
+    # Recibe un archivo .csv e inserta sus datos en la base de datos
+    # Solo inserta los registros que no están repetidos
     def self.upload(file)
         csv_file = CSV.new(file, headers: true, col_sep: ";")
         is_first = true
