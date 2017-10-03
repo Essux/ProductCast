@@ -6,7 +6,8 @@ require 'date'
 puts "Arithmetic_mean_model loaded"
 
 class Arithmetic_mean_model < Model
-    def initialize(model_id, name, parameters)
+    def initialize(model_id, name)
+        parameters = Hash.new
         super(model_id, name, parameters)
     end
 
