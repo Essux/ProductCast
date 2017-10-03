@@ -10,7 +10,7 @@
         <th>Ventas</th>
     </tr>
 
-<% @product.records.each do |record| %>
+<% @product.records.sort_by(&:date).each do |record| %>
     <tr>
         <td><%= record.date %></td>
         <td><%= record.sales %></td>
