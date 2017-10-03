@@ -4,15 +4,16 @@ require_relative './../Data/predicted_data'
 require_relative './Errors/parameter_error'
 require 'date'
 
-## Simple Moving Average
+# Simple Moving Average
 class SMA_Model < Model
   def initialize(n, model_id, name)
     parameters = { :N => n}
-    super(model_id, name; parameters)
+    super(model_id, name, parameters)
   end
 
   def run(historical_data, num_of_predictions)
-    prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality,
+    prediction = Predicted_data.new(historical_data.product_id,
+                                    historical_data.seasonality,
                                     self, num_of_predictions)
 
     if historical_data.num_of_records == 0 || num_of_predictions == 0
@@ -20,7 +21,7 @@ class SMA_Model < Model
     end
 
     if historical_data.num_of_records < parameters[:N]
-      rise ParameterError, [
+      raise ParameterError, [
              "El parametro N no puede ser mayor que el periodo de datos",
              "historicos seleccionados"
            ].join(" ")
