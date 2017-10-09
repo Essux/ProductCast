@@ -20,8 +20,8 @@ class Linear_Regression_Model < Model
       return prediction
     end
 
-    regression = Linear(historical_data.sales,
-                        (1..historical_data.num_of_records).to_a)
+    regression = Linear((1..historical_data.num_of_records).to_a,
+                        historical_data.sales)
 
     sales = []
     dates = []
