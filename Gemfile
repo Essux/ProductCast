@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Use Bootstrap gem
+gem 'bootstrap-sass'
 # Linear regression gem for data prediction
 gem 'linear-regression', '0.0.2'
 
