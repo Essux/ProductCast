@@ -1,31 +1,24 @@
 
 class Time_series
-    #The seasonality value of a time series without seasonality
+    #La estacionalidad de una serie de tiempo sin estacionalidad
     NO_SEASONALITY = 1
-    attr_reader :product_id, :seasonality, :sales, :dates, :num_of_records
+    attr_reader :product_id, :seasonality, :sales, :dates, :period
     
-    def initialize(product_id, seasonality = NO_SEASONALITY)
+    def initialize(product_id, seasonality = NO_SEASONALITY, period)
         @product_id = product_id
+        @seasonality = seasonality
+        @period = period
         @sales = Array.new
         @dates = Array.new
-        @num_of_records = 0
-        @seasonality = seasonality
+        
     end
 
-    
-    def load_records(sales, dates)
-        if sales.respond_to?("each") && dates.respond_to?("each")
-            if sales.size == dates.size
-                @sales.concat(sales)
-                @dates.concat(dates)
-                @num_of_records += sales.size
-            else 
-                raise "The number of dates and sales records does not match"
-            end
+    #Retorna el tamaño del arreglo mas pequeño entre sales y dates
+    def num_of_records
+        if @sales.size < @dates.size
+            return @sales.size
         else 
-            @sales.push(sales)
-            @dates.push(dates)
-            @num_of_records += 1
+            return @dates.size
         end
     end
 end
