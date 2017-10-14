@@ -9,32 +9,20 @@ class Arithmetic_mean_model < Model
         super(model_id, name, parameters)
     end
 
-    #By now, it assumes a period of one month
-    def run(historical_data, num_of_predictions)
-        prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, self, num_of_predictions)
-        #If there is nothing to be done
-        if historical_data.num_of_records == 0 || num_of_predictions == 0
-            return prediction
-        end
-
-        #find the mean
+    protected
+    def run_model(sales, num_of_predictions)
+        #Hallar la media
         sum = 0
-        historical_data.sales.each do |sales_record|
+        sales.each do |sales_record|
             sum += sales_record
         end
-        mean = (sum * 1.0) / (historical_data.num_of_records * 1.0)
-
-        #load prediction
-        sales = []
-        dates = []
-        last_date = historical_data.dates[historical_data.num_of_records - 1]
+        mean = (sum * 1.0) / (sales.size * 1.0)
+        
+        #Cargar y retornar el arreglo de demandas predichas
+        predictions = []
         num_of_predictions.times do
-            last_date = last_date.next_month
-            sales.push(mean)
-            dates.push(last_date)
+            predictions.push(mean)
         end
-
-        prediction.load_records(sales, dates)
-        return prediction
+        return predictions
     end
 end
