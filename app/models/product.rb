@@ -1,4 +1,6 @@
 require 'csv'
+require_relative './Data/historical_data'
+require_relative './Periods/monthly'
 
 class Product < ApplicationRecord
     has_many :records
@@ -37,5 +39,33 @@ class Product < ApplicationRecord
                 products[i].records.create(date: record_date, sales: row[i+1].to_i)
             end
         end
+    end
+
+    # Recibe el id de un producto y devuelve una instancia de Historical_Data
+    # con los registros entre las fechas dadas o todos los registros si no
+    # se especifican los limites
+    def self.get_historical_data (product_id, from=nil, to=nil)
+        product = Product.find(product_id)
+
+        if from.nil? and to.nil?
+            records = Record.where("product_id = ?", product_id).order("date ASC")
+        else
+            records = Record.where("product_id = ? AND date >= ? AND date <= ?", product_id, from, to).order("date ASC")
+        end
+
+        # En este momento se pasa fijo un periodo de un mes porque no hemos
+        # definido como manejar los periodos
+        historical_data = Data::Historical_data.new(product_id, Periods::Monthly.new)
+
+        # Extraer las ventas y las fechas de cada instancia de registro
+        sales = []
+        dates = []
+        records.each do |record|
+            sales.push record.sales
+            dates.push record.date
+        end
+
+        historical_data.load_records(sales, dates)
+        historical_data
     end
 end
