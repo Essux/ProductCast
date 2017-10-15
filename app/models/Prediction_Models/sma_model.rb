@@ -1,7 +1,7 @@
-require_relative './model'
-require_relative './../Data/historical_data'
-require_relative './../Data/predicted_data'
-require_relative './Errors/parameter_error'
+require_relative '../Base_Prediction_Model/model'
+require_relative '../Data/historical_data'
+require_relative '../Data/predicted_data'
+require_relative '../Errors/parameter_error'
 require 'date'
 
 # Simple Moving Average

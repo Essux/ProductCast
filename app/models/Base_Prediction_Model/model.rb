@@ -1,6 +1,6 @@
-require_relative './../Data/time_series'
-require_relative './../Data/predicted_data'
-require_relative './../Data/historical_data'
+require_relative '../Data/time_series'
+require_relative '../Data/predicted_data'
+require_relative '../Data/historical_data'
 
 class Model
     attr_reader :model_id, :name

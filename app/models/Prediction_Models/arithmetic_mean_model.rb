@@ -1,6 +1,6 @@
-require_relative './model'
-require_relative './../Data/historical_data'
-require_relative './../Data/predicted_data'
+require_relative '../Base_Prediction_Model/model'
+require_relative '../Data/historical_data'
+require_relative '../Data/predicted_data'
 require 'date'
 
 class Arithmetic_mean_model < Model
