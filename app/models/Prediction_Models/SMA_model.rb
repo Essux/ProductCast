@@ -1,11 +1,13 @@
-require_relative '../Base_Prediction_Model/model'
+require_relative '../Base_Prediction_Model/base_model'
 require_relative '../Data/historical_data'
 require_relative '../Data/predicted_data'
 require_relative '../Errors/parameter_error'
 require 'date'
 
 # Simple Moving Average
-class SMA_Model < Model
+class SMA_model < BaseModel
+  @public_name = "Promedio Móvil Simple"
+  
   def initialize(n, model_id, name)
     parameters = { :N => n}
     super(model_id, name, parameters)

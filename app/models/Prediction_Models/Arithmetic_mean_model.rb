@@ -1,9 +1,11 @@
-require_relative '../Base_Prediction_Model/model'
+require_relative '../Base_Prediction_Model/base_model'
 require_relative '../Data/historical_data'
 require_relative '../Data/predicted_data'
 require 'date'
 
-class Arithmetic_mean_model < Model
+class Arithmetic_mean_model < BaseModel
+    @public_name = "Media aritmética"
+    
     def initialize(model_id, name)
         parameters = Hash.new
         super(model_id, name, parameters)

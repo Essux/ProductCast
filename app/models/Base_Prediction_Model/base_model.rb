@@ -2,9 +2,15 @@ require_relative '../Data/time_series'
 require_relative '../Data/predicted_data'
 require_relative '../Data/historical_data'
 
-class Model
+class BaseModel
     attr_reader :model_id, :name
     attr_accessor :parameters
+
+    @public_name = "Modelo base"
+  
+    class << self
+        attr_reader :public_name
+    end
 
     def initialize(model_id, name, parameters)
         @model_id = model_id
