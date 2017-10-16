@@ -7,9 +7,10 @@ class BaseModel
     attr_accessor :parameters
 
     @public_name = "Modelo base"
+    @parameters_list = []
   
     class << self
-        attr_reader :public_name
+        attr_reader :public_name, :parameters_list
     end
 
     def initialize(model_id, name, parameters)

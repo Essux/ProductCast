@@ -1,0 +1,15 @@
+<h1>Seleccione los modelos a utilizar</h1>
+
+<table>
+    <tr>
+        <th> Modelo </th>
+        <th></th>
+    </tr>
+    
+    <% @models.each do |model| %>
+        <tr>
+            <td><%= model.name %></td>
+            <td><%= model.class_name %></td>
+        </tr>
+    <% end %>
+</table>

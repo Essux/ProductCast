@@ -7,7 +7,7 @@ class Arithmetic_mean_model < BaseModel
     @public_name = "Media aritmética"
     
     def initialize(model_id, name)
-        parameters = Hash.new
+        parameters = {}
         super(model_id, name, parameters)
     end
 

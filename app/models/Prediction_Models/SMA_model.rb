@@ -7,6 +7,7 @@ require 'date'
 # Simple Moving Average
 class SMA_model < BaseModel
   @public_name = "Promedio Móvil Simple"
+  @parameters_list = ["N"]
   
   def initialize(n, model_id, name)
     parameters = { :N => n}

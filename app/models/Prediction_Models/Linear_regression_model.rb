@@ -9,7 +9,7 @@ class Linear_regression_model < BaseModel
   @public_name = "Regresión lineal"
   
   def initialize(model_id, name)
-    parameters = Hash.new
+    parameters = {}
     super(model_id, name, parameters)
   end
 

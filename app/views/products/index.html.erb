@@ -4,15 +4,14 @@
     <tr>
         <th> Producto </th>
         <th></th>
+        <th></th>
     <tr>
 
     <% @products.each do |product| %>
         <tr>
-            <td><%= product.name %>
-            <td><%= link_to 'Ver', product_path(product) %>
+            <td><%= product.name %></td>
+            <td><%= link_to 'Ver', product_path(product) %></td>
+            <td><%= button_to "Predecir demanda", models_path, params: {id: product.id} %></td>
         </tr>
     <% end %>
 </table>
-
-<br>
-<%= link_to 'Inicio', root_path%>
