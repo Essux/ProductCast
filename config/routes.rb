@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   
   post '/models', to: "models#select"
+  post '/models/params', to: "models#select_params"
   
   namespace :upload do
     get 'file'
