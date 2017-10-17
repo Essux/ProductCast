@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  forecast_set: one
-  model: one
+  product_id: one
 
 two:
-  forecast_set: two
-  model: two
+  product_id: two

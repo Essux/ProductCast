@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'select_models', to: "forecast_sets#select_models"
+
+  post 'select_params', to: "forecast_sets#select_params"
+
   get 'welcome/index'
   #resources :models
   root 'welcome#index'
@@ -7,8 +12,8 @@ Rails.application.routes.draw do
     resources :records, only: :index
   end
   
-  post '/models', to: "models#select"
-  post '/models/params', to: "models#select_params"
+  get '/models', to: "models#select"
+  get '/models/params', to: "models#select_params"
   
   namespace :upload do
     get 'file'

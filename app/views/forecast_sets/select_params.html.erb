@@ -1,0 +1,14 @@
+<h1>Seleccionar parámetros</h1>
+
+<% @forecast_set.models.each do |model| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"> <%= model.name %></div>
+    <div class="panel-body">
+      <% if !model.parameters.empty? %>
+      
+      <% else %>
+        Este modelo no tiene parámetros que puedan ser configurados.
+      <% end %>
+    </div>
+  </div>
+<% end %>
