@@ -10,6 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+// Is necesary to keep this order of the imports below, to avoid problems:
+//= require jquery
+//= require jquery_ujs
+//= require jquery.slimscroll.min
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
+//= require admin
