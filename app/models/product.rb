@@ -57,7 +57,7 @@ class Product < ApplicationRecord
         # definido como manejar los periodos
         historical_data = Data::Historical_data.new(product_id, Periods::Monthly.new)
 
-        # Extraer las ventas y las fechas de cada instancia de registro
+        # Extraer las ventas y las fechas de cada registro
         sales = []
         dates = []
         records.each do |record|
