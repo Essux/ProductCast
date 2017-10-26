@@ -1,3 +1,5 @@
+require 'date'
+
 class ProductsController < ApplicationController
     # Se llama al mostrar todos los productos
     def index

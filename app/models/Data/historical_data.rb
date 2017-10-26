@@ -1,7 +1,7 @@
 require_relative './time_series'
 
-class Historical_data < Time_series
-    def initialize(product_id, seasonality = Time_series::NO_SEASONALITY, period)
+class Data::Historical_data < Time_series
+    def initialize(product_id, period, seasonality = Time_series::NO_SEASONALITY)
         super(product_id, seasonality, period)
     end
 
@@ -12,11 +12,11 @@ class Historical_data < Time_series
             if sales.size == dates.size
                 @sales.concat(sales)
                 @dates.concat(dates)
-            else 
+            else
                 raise "The number of dates and sales records does not match"
             end
         #Sino es una colección entonces es un solo registro
-        else 
+        else
             @sales.push(sales)
             @dates.push(dates)
         end
