@@ -17,3 +17,5 @@
 /yarn-error.log
 
 .byebug_history
+
+app/models/Prediction_Models/test.rb

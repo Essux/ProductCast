@@ -11,42 +11,25 @@ class SMA_Model < Model
     super(model_id, name, parameters)
   end
 
-  def run(historical_data, num_of_predictions)
-    prediction = Predicted_data.new(historical_data.product_id,
-                                    historical_data.seasonality,
-                                    self, num_of_predictions)
-
-    if historical_data.num_of_records == 0 || num_of_predictions == 0
-      return prediction
-    end
-
-    if historical_data.num_of_records < parameters[:N]
-      raise ParameterError, [
-             "El parametro N no puede ser mayor que el periodo de datos",
-             "historicos seleccionados"
-           ].join(" ")
-    end
-
-    # Calculates forecast (I think that this should be a private function but
-    # for now lets leave this here c: )
+  protected
+  def run_model(sales, num_of_predictions)
+    num_of_periods = @parameters[:N]
+    
+    #Hallar el promedio movil
     sum = 0
-    for d in historical_data.sales.drop(parameters[:N])
-      sum += d
+    i = sales.size - 1
+    num_of_periods.times do
+      break if i < 0
+      sum += sales[i]
+      i -= 1
     end
+    prediction = (sum * 1.0) / (num_of_periods * 1.0)
 
-    forecast = sum/parameters[:N]
-
-    # Load prediction (this should be a function I guess)
-    sales = []
-    dates = []
-    last_date = historical_data.dates[historical_data.num_of_records - 1]
+    #Cargar y retornar el arreglo de demandas predichas
+    predictions = []
     num_of_predictions.times do
-      last_date = last_date.next_month
-      sales.push(forecast)
-      dates.push(last_date)
+      predictions.push(prediction)
     end
-
-    prediction.load_records(sales, dates)
-    return prediction
+    return predictions
   end
 end

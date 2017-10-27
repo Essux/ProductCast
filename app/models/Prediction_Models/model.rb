@@ -19,7 +19,7 @@ class Model
         end
 
         #Parametro de Predicted_data
-        first_prediction_date = historical_data.dates[historical_data.num_of_records() - 1]
+        first_prediction_date = historical_data.period.next_period(historical_data.dates.last)
         prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, historical_data.period, first_prediction_date,self)        
  
         #Si no se solicitaron predicciones
