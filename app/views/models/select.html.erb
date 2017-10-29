@@ -1,0 +1,19 @@
+<h1>Seleccione los modelos a utilizar</h1>
+
+<%= form_tag(models_params_path, method: "get") do %>
+    <table>
+        <tr>
+            <th> Modelo </th>
+            <th></th>
+        </tr>
+        
+        <% @models.each do |model| %>
+            <tr>
+                <td><%= model.name %></td>
+                <td><%= check_box_tag 'models[]', model.id %></td>
+            </tr>
+        <% end %>
+    </table>
+    
+    <%= submit_tag("Seleccionar modelos") %>
+<% end %>

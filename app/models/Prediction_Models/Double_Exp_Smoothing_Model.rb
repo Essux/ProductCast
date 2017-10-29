@@ -1,9 +1,12 @@
-require_relative './model'
+require_relative '../Base_Prediction_Model/base_model'
 require_relative './../Data/historical_data'
 require_relative './../Data/predicted_data'
 require 'date'
 
-class Double_Exp_Smoothing_Model < Model
+class Double_Exp_Smoothing_Model < BaseModel
+    @public_name = "Suavizacion exponencial con ajuste de tendencia"
+    @parameters_list = ["Alfa", "Beta"]
+  
     def initialize(model_id, name, alpha, beta)
         parameters = { :Alpha => alpha, :Beta => beta}
         super(model_id, name, parameters)

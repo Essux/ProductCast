@@ -1,14 +1,16 @@
-require_relative './model'
-require_relative './../Data/historical_data'
-require_relative './../Data/predicted_data'
+require_relative '../Base_Prediction_Model/base_model'
+require_relative '../Data/historical_data'
+require_relative '../Data/predicted_data'
 require 'date'
 
 require 'linear-regression'
 
 # Linear regression model
-class Linear_Regression_Model < Model
+class Linear_regression_model < BaseModel
+  @public_name = "Regresión lineal"
+  
   def initialize(model_id, name)
-    parameters = Hash.new
+    parameters = {}
     super(model_id, name, parameters)
   end
 

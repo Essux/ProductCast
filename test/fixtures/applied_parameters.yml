@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parameter: one
+  value: 1.5
+  execution: one
+
+two:
+  parameter: two
+  value: 1.5
+  execution: two
