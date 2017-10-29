@@ -1,9 +1,12 @@
-require_relative './model'
+require_relative '../Base_Prediction_Model/base_model'
 require_relative './../Data/historical_data'
 require_relative './../Data/predicted_data'
 require 'date'
 
-class Single_Exp_Smoothing_Model < Model
+class Single_Exp_Smoothing_Model < BaseModel
+    @public_name = "Suavizacion exponencial"
+    @parameters_list = ["Alfa"]
+    
     def initialize(model_id, name, alpha)
         parameters = { :Alpha => alpha}
         super(model_id, name, parameters)
