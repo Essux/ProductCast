@@ -20,8 +20,10 @@ class ForecastSetsController < ApplicationController
       model = Model.find(model)
       model.parameters.each { |parameter|
         execution = Execution.find_by(model_id: model.id, forecast_set_id: @forecast_set.id)
-        applied_parameter = AppliedParameter.new(parameter_id: parameter.id, execution_id: execution.id, value: params[parameter.name][parameter.id])
-        applied_parameter.save
+        unless execution == nil
+          applied_parameter = AppliedParameter.new(parameter_id: parameter.id, execution_id: execution.id, value: params[:forecast_set][:applied_parameters][:"#{parameter.id}"])
+          applied_parameter.save
+        end
       }
     }
   end

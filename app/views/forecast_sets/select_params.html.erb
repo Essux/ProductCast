@@ -10,10 +10,10 @@
       <div class="panel-body">
         <% if !model.parameters.empty? %>
           <%  model.parameters.each do |param| %>
-            <%= fields_for param.name do |p| %>
-              <%= p.label param.name %>
-              <%= p.number_field "applied_parameters[#{param.id}]", value:1, min: 1 %>
-            <% end %>
+            <%# fields_for param.name do |p| %>
+              <%= f.label param.name %>
+              <%= f.number_field "applied_parameters[#{param.id}]", value:1, min: 1 %>
+            <%# end %>
           <% end %>
         <% else %>
           Este modelo no tiene parámetros que puedan ser configurados.
