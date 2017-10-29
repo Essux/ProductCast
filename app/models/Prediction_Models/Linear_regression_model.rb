@@ -7,6 +7,7 @@ require 'linear-regression'
 # Linear regression model
 class Linear_regression_model < BaseModel
   @public_name = "Regresión lineal"
+  @parameters_list = ["t1", "t2", "t3"]
   
   def initialize(model_id, name)
     parameters = {}

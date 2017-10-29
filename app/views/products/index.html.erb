@@ -11,7 +11,7 @@
         <tr>
             <td><%= product.name %></td>
             <td><%= link_to 'Ver', product_path(product) %></td>
-            <td><%= button_to "Predecir demanda", select_models_path, params: {id: product.id}, method: 'get' %></td>
+            <td><%= link_to "Predecir demanda", predict_path(:id => product.id)%></td>
         </tr>
     <% end %>
 </table>

@@ -1,14 +1,25 @@
 <h1>Seleccionar parámetros</h1>
 
-<% @forecast_set.models.each do |model| %>
-  <div class="panel panel-default">
-    <div class="panel-heading"> <%= model.name %></div>
-    <div class="panel-body">
-      <% if !model.parameters.empty? %>
-      
-      <% else %>
-        Este modelo no tiene parámetros que puedan ser configurados.
-      <% end %>
+<%= form_for @forecast_set, url: new_results_path(product_id: params[:id], model_ids: params[:forecast_set][:model_ids]) do |f| %>
+  <%= f.label :forecast_amount, "Cantidad de datos a predecir" %>
+  <%= f.number_field(:forecast_amount, value: 1, min: 1) %>
+  <br>
+  <% @forecast_set.models.each do |model| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"> <%= model.name %></div>
+      <div class="panel-body">
+        <% if !model.parameters.empty? %>
+          <%  model.parameters.each do |param| %>
+            <%= fields_for param.name do |p| %>
+              <%= p.label param.name %>
+              <%= p.number_field "applied_parameters[#{param.id}]", value:1, min: 1 %>
+            <% end %>
+          <% end %>
+        <% else %>
+          Este modelo no tiene parámetros que puedan ser configurados.
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
+  <%= submit_tag("Aceptar") %>
 <% end %>
