@@ -1,0 +1,17 @@
+<%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
+    <table>
+      <tr>
+          <th> Modelo </th>
+          <th></th>
+      </tr>
+      <%= f.collection_check_boxes(:model_ids, Model.all, :id, :name) do |b|%>
+        <tr>
+            <td><%= b.text %></td>
+            <td><%= b.label { b.check_box } %></td>
+        </tr>
+      <% end %>
+    </table>
+    <p>
+    <%= f.submit("Seleccionar modelos") %>
+    </p>
+<% end %>

@@ -1,4 +1,4 @@
-require_relative './../Prediction_Models/model'
+require_relative './../Base_Prediction_Model/base_model'
 require_relative './time_series'
 require_relative './../Periods/periodicity'
 require 'date'
