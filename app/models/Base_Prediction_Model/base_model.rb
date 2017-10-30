@@ -8,13 +8,14 @@ class BaseModel
 
     @public_name = "Modelo base"
     @parameters_list = []
+    @local_id = -1
   
     class << self
-        attr_reader :public_name, :parameters_list
+        attr_reader :public_name, :parameters_list, :local_id
     end
 
-    def initialize(model_id, name, parameters)
-        @model_id = model_id
+    def initialize(name, parameters)
+        @model_id = @local_id
         @name = name
         @parameters = parameters
     end

@@ -9,9 +9,9 @@ class SMA_model < BaseModel
   @public_name = "Promedio Móvil Simple"
   @parameters_list = ["N"]
   
-  def initialize(n, model_id, name)
+  def initialize(n, name)
     parameters = { :N => n}
-    super(model_id, name, parameters)
+    super(name, parameters)
   end
 
   protected

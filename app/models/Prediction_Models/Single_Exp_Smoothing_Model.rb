@@ -7,9 +7,9 @@ class Single_Exp_Smoothing_Model < BaseModel
     @public_name = "Suavizacion exponencial"
     @parameters_list = ["Alfa"]
     
-    def initialize(model_id, name, alpha)
+    def initialize(name, alpha)
         parameters = { :Alpha => alpha}
-        super(model_id, name, parameters)
+        super(name, parameters)
     end
 
     protected

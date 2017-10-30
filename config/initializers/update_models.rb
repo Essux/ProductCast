@@ -14,4 +14,9 @@ if defined?(Rails::Server)
       temp.save
     }
     
+    all_models = Model.all
+    all_models.each { |model|
+      model.class_name.constantize.local_id = model.id
+    }
+    
 end
