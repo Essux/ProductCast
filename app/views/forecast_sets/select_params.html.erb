@@ -22,9 +22,6 @@
             <%= f.number_field(:forecast_amount, value: 1, min: 1, :class=>"form-control") %>
             </div>
           </div>
-          <div class="col col-md-4">
-              <%= submit_tag "Aceptar", :class => "btn btn-block btn-flat btn-primary" %>
-          </div>
         </div>
       </div>
       <div class="box-footer">
@@ -46,10 +43,12 @@
       <% if !model.parameters.empty? %>
           <%  model.parameters.each do |param| %>
             <%# fields_for param.name do |p| %>
-            <div class="col col-md-11">
+            <div class="col col-md-6">
               <div class="form-group">
-              <%= f.label param.name %>
-              <%= f.number_field "applied_parameters[#{param.id}]", value:1, min: 1 , :class=>"form-control" %>
+                <%= f.label param.name, class:"col col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                <%= f.number_field "applied_parameters[#{param.id}]", value:1, min: 1 , :class=>"form-control" %>
+                </div>
               </div>
             </div>
             <%# end %>
@@ -61,6 +60,11 @@
   </div>
 </div>
   <% end %>
-  
-
+          <div class="row center">
+            <div class="col col-md-3"></div>
+            <div class="col col-md-6">
+              <%= submit_tag "Aceptar", :class => "btn btn-block btn-flat btn-primary" %>
+            </div>
+            <div class="col col-md-3"></div>
+          </div>
 <% end %>
