@@ -1,1 +1,8 @@
-Aquí van las predicciones :b
+<h1>Resultados</h1>
+
+<% @forecast_set.executions.each do |execution| %>
+    <div class="panel panel-default">
+        <h3><%= Model.find(execution.model_id).name %></h3>
+        <%= area_chart Forecast.where(["execution_id = ?", execution.id]).select("date, sales") %>
+    </div>
+<% end %>

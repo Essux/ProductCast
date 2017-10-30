@@ -41,7 +41,6 @@ class ForecastSetsController < ApplicationController
       Forecast.savePredictedData(predicted_data, execution)
     }
   end
-
 private
 
     def forecast_set_models
