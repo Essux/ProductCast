@@ -6,9 +6,9 @@ require 'date'
 class Double_Exp_Smoothing_Model < BaseModel
     @public_name = "Suavizacion exponencial con ajuste de tendencia"
     @parameters_list = ["Alfa", "Beta"]
+    @local_parameters = [:Alpha, :Beta]
   
-    def initialize(alpha, beta)
-        parameters = { :Alpha => alpha, :Beta => beta}
+    def initialize(parameters)
         super(parameters)
     end
 

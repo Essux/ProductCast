@@ -8,9 +8,9 @@ require 'date'
 class SMA_model < BaseModel
   @public_name = "Promedio Móvil Simple"
   @parameters_list = ["N"]
+  @local_parameters = [:N]
   
-  def initialize(n)
-    parameters = { :N => n}
+  def initialize(parameters)
     super(parameters)
   end
 

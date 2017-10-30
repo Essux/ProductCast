@@ -6,8 +6,7 @@ require 'date'
 class Arithmetic_mean_model < BaseModel
     @public_name = "Media aritmética"
     
-    def initialize()
-        parameters = {}
+    def initialize(parameters)
         super(parameters)
     end
 
