@@ -6,10 +6,10 @@ require 'date'
 class Single_Exp_Smoothing_Model < BaseModel
     @public_name = "Suavizacion exponencial"
     @parameters_list = ["Alfa"]
+    @local_parameters = [:Alpha]
     
-    def initialize(model_id, name, alpha)
-        parameters = { :Alpha => alpha}
-        super(model_id, name, parameters)
+    def initialize(parameters)
+        super(parameters)
     end
 
     protected

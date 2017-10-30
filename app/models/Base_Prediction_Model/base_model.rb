@@ -8,14 +8,19 @@ class BaseModel
 
     @public_name = "Modelo base"
     @parameters_list = []
+    @local_id = -1
+    @local_parameters = []
   
     class << self
-        attr_reader :public_name, :parameters_list
+        attr_reader :public_name, :parameters_list, :local_parameters
+        attr_accessor :local_id
     end
 
-    def initialize(model_id, name, parameters)
-        @model_id = model_id
-        @name = name
+    def initialize(parameters)
+        @local_parameters = @local_parameters.to_a
+        permit(parameters)
+        @model_id = @local_id
+        @name = @public_name
         @parameters = parameters
     end
 
@@ -38,6 +43,10 @@ class BaseModel
         predictions = run_model(historical_data.sales, num_of_predictions)
         prediction.load_records(predictions)
         return prediction
+    end
+    
+    def permit(parameters)
+        raise 'Wrong parameters' unless parameters.slice(*self.class.local_parameters).size == self.class.local_parameters.size
     end
 
     protected
