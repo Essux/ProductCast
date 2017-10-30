@@ -7,9 +7,9 @@ class Double_Exp_Smoothing_Model < BaseModel
     @public_name = "Suavizacion exponencial con ajuste de tendencia"
     @parameters_list = ["Alfa", "Beta"]
   
-    def initialize(name, alpha, beta)
+    def initialize(alpha, beta)
         parameters = { :Alpha => alpha, :Beta => beta}
-        super(name, parameters)
+        super(parameters)
     end
 
     protected

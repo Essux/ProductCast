@@ -9,9 +9,9 @@ require 'linear-regression'
 class Linear_regression_model < BaseModel
   @public_name = "Regresión lineal"
   
-  def initialize(name)
+  def initialize()
     parameters = {}
-    super(name, parameters)
+    super(parameters)
   end
 
   protected

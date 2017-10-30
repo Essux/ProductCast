@@ -14,9 +14,9 @@ class BaseModel
         attr_reader :public_name, :parameters_list, :local_id
     end
 
-    def initialize(name, parameters)
+    def initialize(parameters)
         @model_id = @local_id
-        @name = name
+        @name = @public_name
         @parameters = parameters
     end
 
