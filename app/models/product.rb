@@ -61,7 +61,7 @@ class Product < ApplicationRecord
 
         # En este momento se pasa fijo un periodo de un mes porque no hemos
         # definido como manejar los periodos
-        historical_data = Data::Historical_data.new(product_id, Periods::Monthly.new)
+        historical_data = Data::Historical_data.new(product_id, Monthly.new)
 
         # Extraer las ventas y las fechas de cada registro
         sales = []
