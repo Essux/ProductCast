@@ -18,3 +18,6 @@
 //= require_tree .
 //= require bootstrap
 //= require admin
+
+//= require Chart.bundle
+//= require chartkick
