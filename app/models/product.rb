@@ -18,23 +18,23 @@ class Product < ApplicationRecord
                 # Procesar productos usando el header
                 if is_first
                     is_first = false
-    
+
                     # Recorrer el header que tiene los nombres de los productos
                     product_names = csv_file.headers
                     for i in 1..(product_names.length - 1)
                         # Busco si ya hay un producto con ese nombre
                         product = Product.find_by(name: product_names[i])
-    
+
                         # Si no creo uno nuevo
                         if product.nil?
                             product = Product.create(name: product_names[i])
                         end
-    
+
                         # Agrego a la lista de productos
                         products.push(product)
                     end
                 end
-    
+
                 # Insertar registros
                 record_date =  Date.parse(row[0])
                 for i in 0..(products.length-1)
@@ -61,7 +61,7 @@ class Product < ApplicationRecord
 
         # En este momento se pasa fijo un periodo de un mes porque no hemos
         # definido como manejar los periodos
-        historical_data = Data::Historical_data.new(product_id, Periods::Monthly.new)
+        historical_data = Data::Historical_data.new(product_id, Monthly.new)
 
         # Extraer las ventas y las fechas de cada registro
         sales = []

@@ -32,7 +32,7 @@ class ForecastSetsController < ApplicationController
       # Nombre de la subclase de Modelo que se va a usar
       model_class_name = model.class_name
       # Crea una instancia de la clase de Modelo según su nombre
-      model_instance = model_class_name.constantize.new(model_id, model.name, model_params)
+      model_instance = model_class_name.constantize.new(model_params)
       # Trae los datos para hacer predicciones
       historical_data = Product.get_historical_data(@forecast_set.product_id)
       # Ejecuta el modelo

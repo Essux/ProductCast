@@ -10,7 +10,7 @@ class BaseModel
     @parameters_list = []
     @local_id = -1
     @local_parameters = []
-  
+
     class << self
         attr_reader :public_name, :parameters_list, :local_parameters
         attr_accessor :local_id
@@ -18,13 +18,12 @@ class BaseModel
 
     def initialize(parameters)
         @local_parameters = @local_parameters.to_a
-        permit(parameters)
         @model_id = @local_id
         @name = @public_name
         @parameters = parameters
     end
 
-    
+
     def run(historical_data, num_of_predictions)
         if historical_data.num_of_records == 0
             raise 'No historical records found'
@@ -32,21 +31,17 @@ class BaseModel
 
         #Parametro de Predicted_data
         first_prediction_date = historical_data.period.next_period(historical_data.dates.last)
-        prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, historical_data.period, first_prediction_date,self)        
- 
+        prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, historical_data.period, first_prediction_date,self)
+
         #Si no se solicitaron predicciones
         if num_of_predictions == 0
             return prediction
         end
-    
+
         #Obtener y cargar predicciones en 'prediction'
         predictions = run_model(historical_data.sales, num_of_predictions)
         prediction.load_records(predictions)
         return prediction
-    end
-    
-    def permit(parameters)
-        raise 'Wrong parameters' unless parameters.slice(*self.class.local_parameters).size == self.class.local_parameters.size
     end
 
     protected
