@@ -1,6 +1,6 @@
 <h1>Seleccionar parámetros</h1>
 
-<%= form_for @forecast_set, url: new_results_path(product_id: params[:id], model_ids: params[:forecast_set][:model_ids]) do |f| %>
+<%= form_for @forecast_set, url: new_result_path(product_id: params[:id], model_ids: params[:forecast_set][:model_ids]) do |f| %>
   <%= f.label :forecast_amount, "Cantidad de datos a predecir" %>
   <%= f.number_field(:forecast_amount, value: 1, min: 1) %>
   <br>
