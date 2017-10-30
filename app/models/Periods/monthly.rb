@@ -1,7 +1,7 @@
 require_relative './periodicity'
 require 'date'
 
-class Monthly < Periodicity
+class Periods::Monthly < Periodicity
     def next_period(date)
         return date.next_month()
     end

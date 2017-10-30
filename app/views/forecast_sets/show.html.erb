@@ -3,6 +3,6 @@
 <% @forecast_set.executions.each do |execution| %>
     <div class="panel panel-default">
         <h3><%= Model.find(execution.model_id).name %></h3>
-        <%= area_chart Forecast.where(["execution_id = ?", execution.id]).select("date, sales") %>
+        <%= area_chart plotData(execution), width: "800px" %>
     </div>
 <% end %>

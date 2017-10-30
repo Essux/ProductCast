@@ -23,7 +23,7 @@ class ForecastSetsController < ApplicationController
       # Parámetros de la instancia de Modelo que se va a ejecutar
       model_params = {}
       model.parameters.each { |parameter|
-        model_params[parameter.name] = params[:forecast_set][:applied_parameters][:"#{parameter.id}"]
+        model_params[:"#{parameter.name}"] = params[:forecast_set][:applied_parameters][:"#{parameter.id}"]
         unless execution == nil
           applied_parameter = AppliedParameter.new(parameter_id: parameter.id, execution_id: execution.id, value: params[:forecast_set][:applied_parameters][:"#{parameter.id}"])
           applied_parameter.save
@@ -41,6 +41,16 @@ class ForecastSetsController < ApplicationController
       Forecast.savePredictedData(predicted_data, execution)
     }
   end
+
+  def plotData execution
+    data = {}
+    for forecast in execution.forecasts
+      data[forecast.date] = forecast.sales
+    end
+    data
+  end
+
+  helper_method :plotData
 private
 
     def forecast_set_models
