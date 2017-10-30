@@ -15,12 +15,12 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <%= link_to(root_path, :class=>"logo") do %>
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><%= image_tag("logo.png", :alt => "User Image", :class => "logo_p") %></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><%= image_tag("logo.png", :alt => "User Image", :class => "logo_p") %> <b>Product</b>Cast</span>
-    </a>
+    <% end %>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
