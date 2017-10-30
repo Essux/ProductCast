@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   get 'results', to: "forecast_sets#index", as: "results"
   
-  post 'results', to: "forecast_sets#upload", as: "new_results", param: [:product_id, :model_ids]
+  post 'results', to: "forecast_sets#create", as: "new_results", param: [:product_id, :model_ids]
   
   get 'results/:id/', to: "forecast_sets#show", as: "result"
   
