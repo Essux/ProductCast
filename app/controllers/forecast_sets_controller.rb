@@ -3,6 +3,10 @@ class ForecastSetsController < ApplicationController
     id
   end
   
+  def index
+    @forecast_set = ForecastSet.all
+  end
+  
   def select_models
     @forecast_set = ForecastSet.new
   end
@@ -13,6 +17,10 @@ class ForecastSetsController < ApplicationController
   end
   
   def show
+    @forecast_set = ForecastSet.find(params[:id])
+  end
+  
+  def create
     @forecast_set = ForecastSet.new(forecast_set_params)
     @forecast_set.save
     params[:model_ids]
@@ -26,6 +34,7 @@ class ForecastSetsController < ApplicationController
         end
       }
     }
+    redirect_to result_path id: @forecast_set.id
   end
 
 private
