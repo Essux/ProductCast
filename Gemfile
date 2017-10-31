@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "chartkick"
 # Use Bootstrap gem
 gem 'bootstrap-sass'
 # Linear regression gem for data prediction
@@ -59,7 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use font awesome for web-icons
 gem 'font-awesome-sass'
 
-source 'https://rails-assets.org/' do 
+source 'http://insecure.rails-assets.org' do
   # Use adminlte for website UI base template
   gem 'rails-assets-adminlte'
 end

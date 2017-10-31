@@ -1,19 +1,21 @@
 <%= render "details" %>
 
 <% content_for :page_header do %>
-     <h1>Titulo de esta página, probablemente predicciones o resultados</h1>
+     <h1>Resultados</h1>
 <% end %>
 
+<% @forecast_set.executions.each do |execution| %>
 <div class="row">
     <div class="box box-solid">
       <div class="box-header">
-        <h3 class="box-title">Formato de caja mágica para luego mostrar resultados - Este es el título</h3>
+        <h3 class="box-title"><%= Model.find(execution.model_id).name %></h3>
       </div>
       <div class="box-body">
-          Aquí va el contenido, generalmente las gráficas
+                    <%= line_chart plotData(execution), width: "800px" %>
       </div>
       <div class="box-footer">
           Aquí va el pie de la caja, si no es necesario se borra este div: "box-footer"
       </div>
     </div>
 </div>
+<% end %>

@@ -1,6 +1,6 @@
 require_relative './time_series'
 
-class Data::Historical_data < Time_series
+class Historical_data < Time_series
     def initialize(product_id, period, seasonality = Time_series::NO_SEASONALITY)
         super(product_id, seasonality, period)
     end

@@ -7,7 +7,7 @@ class Forecast < ApplicationRecord
     sales.zip(dates).each do |sales_dates|
       forecast = Forecast.new
       forecast.sales = sales_dates[0]
-      forecast.dates = sales_dates[1]
+      forecast.date = sales_dates[1]
       forecast.execution_id = execution.id
       forecast.save
     end
