@@ -70,3 +70,5 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-slimscroll-rails'
 gem 'pakunok'
+
+gem "font-awesome-rails"

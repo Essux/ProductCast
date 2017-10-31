@@ -1,8 +1,21 @@
-<h1>Resultados</h1>
+<%= render "details" %>
+
+<% content_for :page_header do %>
+     <h1>Resultados</h1>
+<% end %>
 
 <% @forecast_set.executions.each do |execution| %>
-    <div class="panel panel-default">
-        <h3><%= Model.find(execution.model_id).name %></h3>
-        <%= area_chart plotData(execution), width: "800px" %>
+<div class="row">
+    <div class="box box-solid">
+      <div class="box-header">
+        <h3 class="box-title"><%= Model.find(execution.model_id).name %></h3>
+      </div>
+      <div class="box-body">
+                    <%= area_chart plotData(execution), width: "800px" %>
+      </div>
+      <div class="box-footer">
+          Aquí va el pie de la caja, si no es necesario se borra este div: "box-footer"
+      </div>
     </div>
+</div>
 <% end %>

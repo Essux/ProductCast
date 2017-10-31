@@ -1,21 +1,31 @@
 <%= render "details" %>
 
-<h1>Productos</h1>
+<% content_for :page_header do %>
+    <h1>Productos<small>Lista de productos</small></h1>
+<% end %>
 
-<table>
-    <tr>
-        <th> Producto </th>
-        <th></th>
-        <th></th>
-    <tr>
-
-    <% @products.each do |product| %>
-        <tr>
-            <td><%= product.name %></td>
-            <td><%= link_to 'Ver', product_path(product) %></td>
-            <td><%= link_to "Predecir demanda", predict_path(:id => product.id)%></td>
-        </tr>
-    <% end %>
-</table>
-
+<div class="row">
+  <div class="box box-solid">
+    <div class="box-header">
+      <i class="fa fa-list"></i><h3 class="box-title">Lista de productos</h3>
+    </div>
+    <div class="box-body">
+        <table>
+            <tr>
+                <th> Producto </th>
+                <th></th>
+                <th></th>
+            <tr>
+        
+            <% @products.each do |product| %>
+                <tr>
+                    <td><%= product.name %></td>
+                    <td><%= link_to 'Ver', product_path(product) %></td>
+                    <td><%= link_to "Predecir demanda", predict_path(:id => product.id)%></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+ </div>
+</div>
 <br>

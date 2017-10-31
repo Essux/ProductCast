@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   
   get 'predict/:id/params', to: "forecast_sets#select_params", as: "predict_select_params"
   
-  post 'results', to: "forecast_sets#show", as: "new_results", param: [:product_id, :model_ids]
+  get 'results', to: "forecast_sets#index", as: "results"
   
-  get 'results/:id/', to: "forecast_sets#show", as: "results"
+  post 'results', to: "forecast_sets#create", as: "new_results", param: [:product_id, :model_ids]
+  
+  get 'results/:id/', to: "forecast_sets#show", as: "result"
   
   #get 'select_models', to: "forecast_sets#select_models"
 

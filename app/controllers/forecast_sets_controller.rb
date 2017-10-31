@@ -2,7 +2,11 @@ class ForecastSetsController < ApplicationController
   def to_param
     id
   end
-
+  
+  def index
+    @forecast_set = ForecastSet.all
+  end
+  
   def select_models
     @forecast_set = ForecastSet.new
   end
@@ -14,6 +18,10 @@ class ForecastSetsController < ApplicationController
 
   # Este método es todo ProductCast
   def show
+    @forecast_set = ForecastSet.find(params[:id])
+  end
+  
+  def create
     @forecast_set = ForecastSet.new(forecast_set_params)
     @forecast_set.save
     params[:model_ids]
@@ -40,6 +48,7 @@ class ForecastSetsController < ApplicationController
       # Guarda las predicciones en la base de datos
       Forecast.savePredictedData(predicted_data, execution)
     }
+    redirect_to result_path id: @forecast_set.id
   end
 
   def plotData execution

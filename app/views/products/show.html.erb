@@ -1,24 +1,31 @@
 <%= render "details" %>
 
-<h1>
-<%= @product.name %>
-</h1>
-
-<h2>Registros</h2>
-
-<table>
-    <tr>
-        <th>Fecha</th>
-        <th>Ventas</th>
-    </tr>
-
-<% @product.records.sort_by(&:date).each do |record| %>
-    <tr>
-        <td><%= record.date %></td>
-        <td><%= record.sales %></td>
-    </tr>
+<% content_for :page_header do %>
+    <h1><%= @product.name %></h1>
 <% end %>
 
 <%= area_chart @plot_records %>
 
 </table>
+<div class="row">
+  <div class="box box-solid">
+    <div class="box-header">
+      <i class="fa fa-calendar"></i><h3 class="box-title">Registros</h3>
+    </div>
+    <div class="box-body">
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Ventas</th>
+            </tr>
+        
+        <% @product.records.sort_by(&:date).each do |record| %>
+            <tr>
+                <td><%= record.date %></td>
+                <td><%= record.sales %></td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+ </div>
+</div>
