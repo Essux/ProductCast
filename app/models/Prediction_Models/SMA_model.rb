@@ -16,7 +16,7 @@ class SMA_model < BaseModel
 
   protected
   def run_model(sales, num_of_predictions)
-    num_of_periods = @parameters[:N]
+    num_of_periods = @parameters[:N].to_i
     
     #Hallar el promedio movil
     sum = 0

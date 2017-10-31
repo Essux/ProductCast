@@ -14,7 +14,28 @@
                     <%= line_chart plotData(execution), width: "800px" %>
       </div>
       <div class="box-footer">
-          Aquí va el pie de la caja, si no es necesario se borra este div: "box-footer"
+          <div class="row">
+            <div class="box box-solid">
+              <div class="box-header">
+                <i class="fa fa-calendar"></i><h3 class="box-title">Resultados</h3>
+              </div>
+              <div class="box-body">
+                  <table class="table">
+                      <tr>
+                          <th>Fecha</th>
+                          <th>Ventas</th>
+                      </tr>
+                  
+                  <% execution.forecasts.sort_by(&:date).each do |record| %>
+                      <tr>
+                          <td><%= record.date %></td>
+                          <td><%= record.sales %></td>
+                      </tr>
+                  <% end %>
+                  </table>
+              </div>
+           </div>
+          </div>
       </div>
     </div>
 </div>
