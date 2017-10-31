@@ -25,10 +25,9 @@ class Double_Exp_Smoothing_Model < BaseModel
         currT = 0
         currF = currS + currT
 
-        for i in (2..sales.size)    
+        for i in (2..sales.size)
             prevS = currS
             prevT = currT
-            prevF = currF
 
             currS = alpha * (sales[i - 1] * 1.0) + (1.0 - alpha) * (prevS + prevT)
             currT = beta * (currS - prevS) + (1.0 - beta) * prevT
@@ -37,6 +36,7 @@ class Double_Exp_Smoothing_Model < BaseModel
 
         predictions = []
         num_of_predictions.times do 
+            puts currF.to_s + " " + currT.to_s
             predictions.push(currF)
             currF += currT
         end
