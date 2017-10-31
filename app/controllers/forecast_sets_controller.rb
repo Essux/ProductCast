@@ -31,7 +31,7 @@ class ForecastSetsController < ApplicationController
       # Parámetros de la instancia de Modelo que se va a ejecutar
       model_params = {}
       model.parameters.each { |parameter|
-        model_params[:"#{parameter.name}"] = params[:forecast_set][:applied_parameters][:"#{parameter.id}"]
+        model_params[:"#{parameter.class_name}"] = params[:forecast_set][:applied_parameters][:"#{parameter.id}"].to_i
         unless execution == nil
           applied_parameter = AppliedParameter.new(parameter_id: parameter.id, execution_id: execution.id, value: params[:forecast_set][:applied_parameters][:"#{parameter.id}"])
           applied_parameter.save
