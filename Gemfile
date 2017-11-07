@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Google oauth2 gem
+gem "omniauth-google-oauth2"
+
 gem "chartkick"
 # Use Bootstrap gem
 gem 'bootstrap-sass'

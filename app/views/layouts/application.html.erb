@@ -7,7 +7,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
+  <%# Machete para que el usuario no pueda hacer nada si no está logueado. Lumo arregla esto plox D: %>
+  <% if !signed_in? %>
+    <div class="page-header">
+      <h1>Por favor ingrese con una cuenta de Office 365 o Gmail</h1>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to "Entrar con Google", '/auth/google' %>
+      </div>
+    </div>
+  <% else %>
+  
   <body class="skin-blue sidebar-mini fixed">
     <div class="wrapper">
 
@@ -167,7 +179,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <%= link_to 'Salir', logout_path, method: :delete, class: "btn btn-default btn-flat" %>
                 </div>
               </li>
             </ul>
@@ -299,4 +311,6 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
   </body>
+  
+  <% end %>
 </html>

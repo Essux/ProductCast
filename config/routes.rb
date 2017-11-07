@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  # Términos y condiciones
+  get 'terms', to: 'welcome#term'
+
+  # Ruta de autenticación de Oauth
+  get '/auth/:provider/callback', to: 'sessions#create'
+  
+  delete '/logout', to: 'sessions#destroy'
 
   get 'predict/:id', to: "forecast_sets#select_models", as: "predict"
   
