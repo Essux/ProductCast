@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'login', to: "users#login"
+
   # Términos y condiciones
   get 'terms', to: 'welcome#term'
 
