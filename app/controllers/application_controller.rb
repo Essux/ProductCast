@@ -12,8 +12,4 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user, :signed_in?
 
-  def current_user=(user)
-    @current_user = user
-    session[:user_id] = user.nil? ? nil : user.id
-  end
 end
