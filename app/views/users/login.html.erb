@@ -24,8 +24,13 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= link_to "Entrar con Google", '/auth/google' %> <br>
-    <%= link_to "Entrar con Office 365", '/auth/microsoft' %>
+    <%= link_to '/auth/google', class: 'btn btn-block btn-social btn-google' do %>
+    <span class="fa fa-google"></span> Entrar con Google
+    <% end %>
+    <br>
+    <%= link_to '/auth/microsoft', class: 'btn btn-block btn-social btn-microsoft' do %>
+    <span class="fa fa-windows"></span> Entrar con Office 365
+    <% end %>
   </div>
 </div>
 

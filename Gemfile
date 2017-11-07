@@ -13,6 +13,7 @@ gem 'omniauth-microsoft-office365'
 gem "chartkick"
 # Use Bootstrap gem
 gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 # Linear regression gem for data prediction
 gem 'linear-regression', '0.0.2'
 
