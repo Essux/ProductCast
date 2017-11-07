@@ -7,6 +7,8 @@ end
 
 # Google oauth2 gem
 gem "omniauth-google-oauth2"
+# Microsoft oauth2 gem
+gem 'omniauth-microsoft-office365'
 
 gem "chartkick"
 # Use Bootstrap gem
