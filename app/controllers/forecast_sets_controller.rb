@@ -4,25 +4,25 @@ class ForecastSetsController < ApplicationController
   end
   
   def index
-    @forecast_set = ForecastSet.all
+    @forecast_set = current_user.forecast_sets.all
   end
   
   def select_models
-    @forecast_set = ForecastSet.new
+    @forecast_set = current_user.forecast_sets.new
   end
 
   def select_params
-    @forecast_set = ForecastSet.new(forecast_set_models)
+    @forecast_set = current_user.forecast_sets.new(forecast_set_models)
     @applied_parameters = AppliedParameter.new
   end
 
   # Este método es todo ProductCast
   def show
-    @forecast_set = ForecastSet.find(params[:id])
+    @forecast_set = current_user.forecast_sets.find(params[:id])
   end
   
   def create
-    @forecast_set = ForecastSet.new(forecast_set_params)
+    @forecast_set = current_user.forecast_sets.new(forecast_set_params)
     @forecast_set.save
     params[:model_ids]
     params[:model_ids].drop(1).each { |model|

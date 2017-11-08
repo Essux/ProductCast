@@ -2,7 +2,7 @@ class UploadController < ApplicationController
     # Se llama cuando se termina de cargar un archivo
     def done
         file = params[:file].tempfile
-        if Product.upload(file)
+        if Product.upload(current_user,file)
             flash[:success] = "Se ha subido el archivo exitosamente"
             redirect_to products_path
         else

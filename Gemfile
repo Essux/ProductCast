@@ -5,9 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Google oauth2 gem
+gem "omniauth-google-oauth2"
+# Microsoft oauth2 gem
+gem 'omniauth-microsoft-office365'
+
 gem "chartkick"
 # Use Bootstrap gem
 gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 # Linear regression gem for data prediction
 gem 'linear-regression', '0.0.2'
 
