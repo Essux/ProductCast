@@ -16,11 +16,11 @@ class ForecastSetsController < ApplicationController
     @applied_parameters = AppliedParameter.new
   end
 
-  # Este método es todo ProductCast
   def show
     @forecast_set = current_user.forecast_sets.find(params[:id])
   end
   
+  # Este método es todo ProductCast
   def create
     @forecast_set = current_user.forecast_sets.new(forecast_set_params)
     @forecast_set.save
@@ -42,7 +42,12 @@ class ForecastSetsController < ApplicationController
       # Crea una instancia de la clase de Modelo según su nombre
       model_instance = model_class_name.constantize.new(model_params)
       # Trae los datos para hacer predicciones
-      historical_data = Product.get_historical_data(@forecast_set.product_id)
+      # Depende si seleccionó el checkbox de todos los datos para usar pasar un número de parámetros
+      if params[:all].nil?
+        historical_data = Product.get_historical_data(@forecast_set.product_id, params[:num_of_records])
+      else
+        historical_data = Product.get_historical_data(@forecast_set.product_id)
+      end
       # Ejecuta el modelo
       predicted_data = model_instance.run(historical_data, @forecast_set.forecast_amount)
       # Guarda las predicciones en la base de datos
@@ -50,8 +55,10 @@ class ForecastSetsController < ApplicationController
     }
     redirect_to result_path id: @forecast_set.id
   end
-
+  
+  # Método usado en la vista para organizar los datos para graficarlos
   def plotData execution
+    # Se crea un hash fecha => ventas
     data = {}
     for forecast in execution.forecasts
       data[forecast.date] = forecast.sales

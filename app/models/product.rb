@@ -51,13 +51,14 @@ class Product < ApplicationRecord
     # Recibe el id de un producto y devuelve una instancia de Historical_Data
     # con los registros entre las fechas dadas o todos los registros si no
     # se especifican los limites
-    def self.get_historical_data (product_id, from=nil, to=nil)
+    def self.get_historical_data (product_id, num_of_records=nil)
         product =  Product.find(product_id)
-
-        if from.nil? and to.nil?
+        puts "Cantidad de registros"
+        puts num_of_records
+        if num_of_records.nil?
             records = Record.where("product_id = ?", product_id).order("date ASC")
         else
-            records = Record.where("product_id = ? AND date >= ? AND date <= ?", product_id, from, to).order("date ASC")
+            records = Record.where("product_id = ?", product_id).order("date ASC").take(num_of_records)
         end
 
         # En este momento se pasa fijo un periodo de un mes porque no hemos

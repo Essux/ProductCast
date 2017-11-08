@@ -11,15 +11,13 @@
         <h3 class="box-title"><%= Model.find(execution.model_id).name %></h3>
       </div>
       <div class="box-body">
-                    <%= line_chart plotData(execution), width: "800px" %>
+          <%= line_chart plotData(execution), width: "800px" %>
       </div>
       <div class="box-footer">
-          <div class="row">
-            <div class="box box-solid">
               <div class="box-header">
                 <i class="fa fa-calendar"></i><h3 class="box-title">Resultados</h3>
               </div>
-              <div class="box-body">
+              <div class="box-body" style="width:600px">
                   <table class="table">
                       <tr>
                           <th>Fecha</th>
@@ -34,8 +32,6 @@
                   <% end %>
                   </table>
               </div>
-           </div>
-          </div>
       </div>
     </div>
 </div>
