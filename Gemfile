@@ -5,8 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Google oauth2 gem
+gem "omniauth-google-oauth2"
+# Microsoft oauth2 gem
+gem 'omniauth-microsoft-office365'
+
+gem "chartkick"
 # Use Bootstrap gem
 gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 # Linear regression gem for data prediction
 gem 'linear-regression', '0.0.2'
 
@@ -59,7 +66,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use font awesome for web-icons
 gem 'font-awesome-sass'
 
-source 'https://rails-assets.org/' do 
+source 'http://insecure.rails-assets.org' do
   # Use adminlte for website UI base template
   gem 'rails-assets-adminlte'
 end
@@ -69,3 +76,5 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-slimscroll-rails'
 gem 'pakunok'
+
+gem "font-awesome-rails"

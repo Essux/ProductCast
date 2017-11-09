@@ -8,15 +8,15 @@ require 'date'
 class SMA_model < BaseModel
   @public_name = "Promedio Móvil Simple"
   @parameters_list = ["N"]
+  @local_parameters = [:N]
   
-  def initialize(n, model_id, name)
-    parameters = { :N => n}
-    super(model_id, name, parameters)
+  def initialize(parameters)
+    super(parameters)
   end
 
   protected
   def run_model(sales, num_of_predictions)
-    num_of_periods = @parameters[:N]
+    num_of_periods = @parameters[:N].to_i
     
     #Hallar el promedio movil
     sum = 0

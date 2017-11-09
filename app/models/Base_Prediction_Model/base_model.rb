@@ -8,18 +8,22 @@ class BaseModel
 
     @public_name = "Modelo base"
     @parameters_list = []
-  
+    @local_id = -1
+    @local_parameters = []
+
     class << self
-        attr_reader :public_name, :parameters_list
+        attr_reader :public_name, :parameters_list, :local_parameters
+        attr_accessor :local_id
     end
 
-    def initialize(model_id, name, parameters)
-        @model_id = model_id
-        @name = name
+    def initialize(parameters)
+        @local_parameters = @local_parameters.to_a
+        @model_id = @local_id
+        @name = @public_name
         @parameters = parameters
     end
 
-    
+
     def run(historical_data, num_of_predictions)
         if historical_data.num_of_records == 0
             raise 'No historical records found'
@@ -27,13 +31,13 @@ class BaseModel
 
         #Parametro de Predicted_data
         first_prediction_date = historical_data.period.next_period(historical_data.dates.last)
-        prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, historical_data.period, first_prediction_date,self)        
- 
+        prediction = Predicted_data.new(historical_data.product_id, historical_data.seasonality, historical_data.period, first_prediction_date,self)
+
         #Si no se solicitaron predicciones
         if num_of_predictions == 0
             return prediction
         end
-    
+
         #Obtener y cargar predicciones en 'prediction'
         predictions = run_model(historical_data.sales, num_of_predictions)
         prediction.load_records(predictions)

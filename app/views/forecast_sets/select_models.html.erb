@@ -1,5 +1,19 @@
-<%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
-    <table>
+<%= render "details" %>
+
+<% content_for :page_header do %>
+    <h1>Seleccione los modelos que desea utilizar</h1>
+<% end %>
+
+<div class="row">
+  <div class="box box-solid">
+    <div class="box-header">
+      <i class="fa fa-list"></i><h3 class="box-title">Modelos</h3>
+    </div>
+    <%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
+
+    <div class="box-body">
+
+    <table class="table">
       <tr>
           <th> Modelo </th>
           <th></th>
@@ -12,6 +26,13 @@
       <% end %>
     </table>
     <p>
-    <%= f.submit("Seleccionar modelos") %>
+    
     </p>
-<% end %>
+     <div class="box-footer">
+       <%= f.submit("Seleccionar modelos", :class => "btn btn-primary" ) %>
+    </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>

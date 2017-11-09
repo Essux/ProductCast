@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require adminlte
+ *= require admin
  *= require skin-blue
+ *= require font-awesome
+ *= require bootstrap-social
  */

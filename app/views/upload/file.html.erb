@@ -1,12 +1,18 @@
 <%= render "details" %>
 
-<h1>Carga de archivos</h1>
+<div class="row">
+  <div class="box box-solid">
+    <div class="box-header">
+      <i class="fa fa-upload"></i><h3 class="box-title"> Subir archivo</h3>
+    </div>
+    <%= form_tag({:action => :done}, multipart: true) do %>
+      <div class="box-body">
+        <%= file_field_tag :file %>
+      </div>
+    <div class="box-footer">
+      <%= submit_tag "Subir", :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<p>Cargue un archivo .csv </p>
-
-<%= form_tag({:action => :done}, multipart: true) do %>
-
-
-  <%= file_field_tag :file %>
-  <%= submit_tag "Subir" %>
-<% end %>
