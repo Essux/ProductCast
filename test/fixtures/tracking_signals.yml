@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-11-13 17:08:56
+  signal: 1.5
+  execution: one
+
+two:
+  date: 2017-11-13 17:08:56
+  signal: 1.5
+  execution: two

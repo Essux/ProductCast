@@ -18,13 +18,14 @@ class Linear_regression_model < BaseModel
     #Crear regresion(#periodo) -> ventas en ese periodo
     regression = Regression::Linear.new((1..sales.size).to_a, sales)
 
+    #Obtener y guardar predicciones
     predictions = []
-    predicted_period = sales.size + 1
-    num_of_predictions.times do
+    predicted_period = 1
+    while predicted_period <= sales.size + num_of_predictions do 
       predictions.push(regression.predict(predicted_period))
       predicted_period += 1
     end
-    
+
     return predictions
   end
 end

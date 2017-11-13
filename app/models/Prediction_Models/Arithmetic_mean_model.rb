@@ -12,15 +12,19 @@ class Arithmetic_mean_model < BaseModel
 
     protected
     def run_model(sales, num_of_predictions)
-        #Hallar la media
-        sum = 0
-        sales.each do |sales_record|
-            sum += sales_record
-        end
-        mean = (sum * 1.0) / (sales.size * 1.0)
-        
-        #Cargar y retornar el arreglo de demandas predichas
         predictions = []
+        sum = sales[0] * 1.0
+
+        #Hallar la suma total
+        for i in 1..sales.size-1
+            #Cargar predicciones de periodos pasados
+            partial_mean = sum / (i)
+            predictions.push(partial_mean)
+            sum += (sales[i] * 1.0)
+        end
+
+        mean = (sum * 1.0) / (sales.size * 1.0)
+        #Cargar predicciones futuras y retornar el arreglo predicciones
         num_of_predictions.times do
             predictions.push(mean)
         end

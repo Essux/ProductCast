@@ -44,9 +44,17 @@ class ForecastSetsController < ApplicationController
       # Trae los datos para hacer predicciones
       historical_data = Product.get_historical_data(@forecast_set.product_id)
       # Ejecuta el modelo
-      predicted_data = model_instance.run(historical_data, @forecast_set.forecast_amount)
+      model_result = model_instance.run(historical_data, @forecast_set.forecast_amount)
+      #Predicciones del modelo
+      predicted_data = model_result[0]
+      #Señal de rastreo del modelo
+      tracking_signal = model_result[1]
+      
       # Guarda las predicciones en la base de datos
       Forecast.savePredictedData(predicted_data, execution)
+      # Guarda la señal de rastreo
+      TrackingSignal.saveTrackingSignal(tracking_signal, execution)
+
     }
     redirect_to result_path id: @forecast_set.id
   end

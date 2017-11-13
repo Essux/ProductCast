@@ -15,15 +15,18 @@ class Single_Exp_Smoothing_Model < BaseModel
     protected
     def run_model(sales, num_of_predictions)
         alpha = @parameters[:Alpha]
+        predictions = []
 
         #Suavizacion exponencial, se inicializa suponiendo que F1 = D0 = sales[0]
-        previous_prediction= (sales.first * 1.0)
+        previous_prediction = (sales.first * 1.0)
+
+        #Calcular y guardar F2 - Fn        
         for i in (2..sales.size)
+            predictions.push(previous_prediction)
             previous_prediction = alpha * (sales[i - 1] * 1.0) + (1.0 - alpha) * previous_prediction
         end
 
-        #Cargar predicciones
-        predictions = []
+        #Cargar num_of_predictions predicciones futuras
         num_of_predictions.times do
             predictions.push(previous_prediction)
         end

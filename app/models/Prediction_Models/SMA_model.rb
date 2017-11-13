@@ -17,22 +17,33 @@ class SMA_model < BaseModel
   protected
   def run_model(sales, num_of_predictions)
     num_of_periods = @parameters[:N].to_i
-    
-    #Hallar el promedio movil
-    sum = 0
-    i = sales.size - 1
-    num_of_periods.times do
-      break if i < 0
-      sum += sales[i]
-      i -= 1
-    end
-    prediction = (sum * 1.0) / (num_of_periods * 1.0)
-
-    #Cargar y retornar el arreglo de demandas predichas
     predictions = []
-    num_of_predictions.times do
-      predictions.push(prediction)
+    #Si no hay suficiente informacion para predecir
+    if sales.size < num_of_periods
+      return predictions
     end
+
+    sum = 0.0
+    #Sumar los primeros num_of_periods periodos, para los que no habra prediccion
+    for i in 0..num_of_periods-1
+      sum += sales[i] * 1.0
+    end
+
+    for i in num_of_periods..sales.size-1
+      #Cargar prediccion para el periodo i
+      partial_sma = sum / (num_of_periods * 1.0)
+      predictions.push(partial_sma)
+      
+      sum -= sales[i - num_of_periods] * 1.0
+      sum += sales[i] * 1.0
+    end
+
+    #Cargar predicciones de periodos futuros
+    future_sma = sum / (num_of_periods * 1.0)
+    num_of_predictions.times do
+      predictions.push(future_sma)
+    end
+    
     return predictions
   end
 end
