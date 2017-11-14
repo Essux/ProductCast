@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107040746) do
+ActiveRecord::Schema.define(version: 20171113220856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 20171107040746) do
     t.index ["product_id"], name: "index_records_on_product_id"
   end
 
+  create_table "tracking_signals", force: :cascade do |t|
+    t.datetime "date"
+    t.float "signal"
+    t.bigint "execution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["execution_id"], name: "index_tracking_signals_on_execution_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -106,4 +115,5 @@ ActiveRecord::Schema.define(version: 20171107040746) do
   add_foreign_key "parameters", "models"
   add_foreign_key "products", "users"
   add_foreign_key "records", "products"
+  add_foreign_key "tracking_signals", "executions"
 end

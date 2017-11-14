@@ -16,6 +16,7 @@ class Double_Exp_Smoothing_Model < BaseModel
     def run_model(sales, num_of_predictions)
         alpha = @parameters[:Alpha]
         beta = @parameters[:Beta]
+        predictions = []
 
         #Doble suavizacion exponencial
         #S: Demanda proyectada, T: valor proyectado de la tendencia, F: Pronostico que resulta de sumarlos
@@ -25,7 +26,9 @@ class Double_Exp_Smoothing_Model < BaseModel
         currT = 0
         currF = currS + currT
 
+        #Generar las predicciones pasadas y cargarlas
         for i in (2..sales.size)
+            predictions.push(currF)
             prevS = currS
             prevT = currT
 
@@ -34,9 +37,8 @@ class Double_Exp_Smoothing_Model < BaseModel
             currF = currS + currT
         end
 
-        predictions = []
+        #Cargar las num_of_predictions predicciones futuras
         num_of_predictions.times do 
-            puts currF.to_s + " " + currT.to_s
             predictions.push(currF)
             currF += currT
         end
