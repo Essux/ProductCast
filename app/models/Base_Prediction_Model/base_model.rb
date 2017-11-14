@@ -46,10 +46,8 @@ class BaseModel
         #Guardar predicciones de periodos futuros
         prediction.load_records(predictions.last(num_of_predictions))
 
-        #Eliminar los periodos futuros (Mashete)
-        predictions.reverse!
-        predictions = predictions.drop(num_of_predictions)
-        predictions.reverse!
+        #Eliminar los periodos futuros ya almacenados
+        predictions.pop(num_of_predictions)
 
         #Obtener la señal de rastreo para los periodos pasados (Los unicos que tienen)
         tracking_signal = get_tracking_signal(historical_data.dates, historical_data.sales , predictions)
