@@ -4,6 +4,32 @@
      <h1>Resultados</h1>
 <% end %>
 
+<style>
+table {
+      width: 100%;
+  }
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+
+tbody {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+tbody td, thead th {
+    width: 30%;
+    float: left;
+}
+</style>
+
 <% @forecast_set.executions.each do |execution| %>
 <div class="row">
     <div class="box box-solid">
@@ -17,19 +43,22 @@
               <div class="box-header">
                 <i class="fa fa-calendar"></i><h3 class="box-title">Resultados</h3>
               </div>
-              <div class="box-body" style="width:600px">
-                  <table class="table">
+              <div class="box-body">
+                  <table class="table" id="results">
+                    <thead>
                       <tr>
                           <th>Fecha</th>
                           <th>Ventas</th>
                       </tr>
-                  
-                  <% execution.forecasts.sort_by(&:date).each do |record| %>
-                      <tr>
-                          <td><%= record.date %></td>
-                          <td><%= record.sales %></td>
-                      </tr>
-                  <% end %>
+                    </thead>
+                      <tbody>
+                        <% execution.forecasts.sort_by(&:date).each do |record| %>
+                            <tr>
+                                <td><%= record.date %></td>
+                                <td><%= record.sales %></td>
+                            </tr>
+                        <% end %>
+                      </tbody>
                   </table>
               </div>
       </div>
