@@ -7,6 +7,13 @@
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+<script type="text/javascript">
+if (window.MathJax) {
+  MathJax.Hub.Queue(
+    ["Typeset",MathJax.Hub]
+  );
+}
+</script>
 
 <div class="col col-md-12">
   <%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
