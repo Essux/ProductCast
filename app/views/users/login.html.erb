@@ -18,20 +18,41 @@
 <p>Usted ya ingresó a la aplicación. Si desea cambiar de usuario primero presione el botón Salir.</p>
 
 <% else %>
+  <div class="col col-sm-1 col-md-4"></div>
+  <div class="col col-sm-10 col-md-6">
+    <div class="box box-solid">
+        <div class="box-header">
+          <div class="col col-md-6">
+            <h3 class="productCast">
+            ProductCast
+          </h3>
+          </div>
+          <div class="col col-md-6">
+             <span class="pull-right"><%= image_tag("logo.png", :alt => "User Image", :class => "logo_l") %></span>
+          </div>
+        </div>
+        <div class="box-body">
+          
+          <div class="col col-md-1"></div>
+          <div class="col col-md-10">
+            <h2>Iniciar sesión</h2>
+            <h5>Por favor ingrese con una cuenta de Office 365 o Gmail</h5>
+            <br><br>
+            <%= link_to '/auth/google', class: 'btn btn-block btn-social btn-google btn-lg' do %>
+            <span class="fa fa-google"></span> Entrar con Google
+            <% end %>
+            <br>
+            <%= link_to '/auth/microsoft', class: 'btn btn-block btn-social btn-microsoft btn-lg' do %>
+            <span class="fa fa-windows"></span> Entrar con Office 365
+            <% end %>
+            <br><br><br><br>
+          </div>
+          <div class="col col-md-1"></div>
+        </div>
+        <div class="box-footer"></div>
+      </div>
+    </div>
+  <div class="col-sm-1 col col-md-2"></div>
 
-<div class="page-header">
-  <h1>Por favor ingrese con una cuenta de Office 365 o Gmail</h1>
-</div>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <%= link_to '/auth/google', class: 'btn btn-block btn-social btn-google' do %>
-    <span class="fa fa-google"></span> Entrar con Google
-    <% end %>
-    <br>
-    <%= link_to '/auth/microsoft', class: 'btn btn-block btn-social btn-microsoft' do %>
-    <span class="fa fa-windows"></span> Entrar con Office 365
-    <% end %>
-  </div>
-</div>
 
 <% end %>
