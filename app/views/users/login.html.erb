@@ -2,6 +2,10 @@
 <title>Ingresar</title>
 <% end %>
 
+<% content_for :login do %>
+  <%= stylesheet_link_tag    "login" %>
+<% end %>
+
 <% if signed_in? %>
 
 <% content_for :sidebar_menu_data do %>
