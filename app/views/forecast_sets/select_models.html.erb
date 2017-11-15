@@ -8,37 +8,64 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<div class="row">
-  <div class="box box-solid">
-    <div class="box-header">
-      <i class="fa fa-list"></i><h3 class="box-title">Modelos</h3>
-    </div>
-    <%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
-
-    <div class="box-body">
-
-    <table class="table">
-      <tr>
-          <th> Modelo </th>
-          <th> Ecuación </th>
-          <th></th>
-      </tr>
-      <%= f.collection_check_boxes(:model_ids, Model.all, :id, :name) do |b|%>
-        <tr>
-            <td><%= b.text %></td>
-            <td>$$ <%= Model.find(b.value).class_name.constantize.ecuation %> $$</td>
-            <td><%= b.label { b.check_box } %></td>
-        </tr>
-      <% end %>
-    </table>
-    <p>
-    
-    </p>
-     <div class="box-footer">
-       <%= f.submit("Seleccionar modelos", :class => "btn btn-primary" ) %>
+<div class="col col-md-12">
+  <%= form_for @forecast_set, url: predict_select_params_path(id: params[:id]), method: "get" do |f| %>
+  <%= f.collection_check_boxes(:model_ids, Model.all, :id, :name) do |b|%>
+  <div class="col col-lg-12 center">
+    <%= b.check_box %>
+    <%= b.label do%>
+    <div class="box box-solid">
+      <div class="box-header">
+        <i class="fa fa-list"></i><h3 class="box-title"><%= b.text %></h3>
+      </div>
+      <div class="box-body">
+        $$ <%= Model.find(b.value).class_name.constantize.ecuation %> $$
+      </div>
     </div>
     <% end %>
-
-    </div>
   </div>
+  <% end %>
+  <div class="col col-md-12 center">
+         <%= f.submit("Seleccionar modelos", :class => "btn btn-primary btn-lg" ) %>
+  </div>
+<% end %>
 </div>
+
+<style>
+
+input[type="checkbox"][id^="forecast_set_model_ids_"] {
+  display: none;
+}
+
+label {
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+:checked ~ label .box{
+  box-shadow:         inset 0 0 10px #838383;
+  background-color:silver;
+}
+
+</style>
