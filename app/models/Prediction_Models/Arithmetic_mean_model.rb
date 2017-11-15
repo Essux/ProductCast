@@ -5,6 +5,7 @@ require 'date'
 
 class Arithmetic_mean_model < BaseModel
     @public_name = "Media aritmética"
+    @ecuation = 'F_{t} = \frac{\sum D_{i}}{t}'
     
     def initialize(parameters)
         super(parameters)

@@ -7,6 +7,7 @@ class Single_Exp_Smoothing_Model < BaseModel
     @public_name = "Suavizacion exponencial"
     @parameters_list = ["Alfa"]
     @local_parameters = [:Alpha]
+    @ecuation = 'F_{t} = \alpha D_{t-1} + (1 - \alpha) F_{t-1}'
 
     def initialize(parameters)
         super(parameters)

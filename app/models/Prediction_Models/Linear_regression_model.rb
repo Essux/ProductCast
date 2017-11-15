@@ -8,6 +8,7 @@ require 'linear-regression'
 # Linear regression model
 class Linear_regression_model < BaseModel
   @public_name = "Regresión lineal"
+  @ecuation = 'F = \alpha + \beta x + \epsilon'
   
   def initialize(parameters)
     super(parameters)

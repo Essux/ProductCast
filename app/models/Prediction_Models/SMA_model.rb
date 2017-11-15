@@ -9,6 +9,7 @@ class SMA_model < BaseModel
   @public_name = "Promedio Móvil Simple"
   @parameters_list = ["N"]
   @local_parameters = [:N]
+  @ecuation = 'F_{t} = \frac{1}{N} \sum D_{i}'
   
   def initialize(parameters)
     super(parameters)

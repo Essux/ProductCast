@@ -4,6 +4,10 @@
     <h1>Seleccione los modelos que desea utilizar</h1>
 <% end %>
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <div class="row">
   <div class="box box-solid">
     <div class="box-header">
@@ -16,11 +20,13 @@
     <table class="table">
       <tr>
           <th> Modelo </th>
+          <th> Ecuación </th>
           <th></th>
       </tr>
       <%= f.collection_check_boxes(:model_ids, Model.all, :id, :name) do |b|%>
         <tr>
             <td><%= b.text %></td>
+            <td>$$ <%= Model.find(b.value).class_name.constantize.ecuation %> $$</td>
             <td><%= b.label { b.check_box } %></td>
         </tr>
       <% end %>

@@ -10,9 +10,10 @@ class BaseModel
     @parameters_list = []
     @local_id = -1
     @local_parameters = []
+    @ecuation = ""
 
     class << self
-        attr_reader :public_name, :parameters_list, :local_parameters
+        attr_reader :public_name, :parameters_list, :local_parameters, :ecuation
         attr_accessor :local_id
     end
 
