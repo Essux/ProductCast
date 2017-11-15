@@ -24,6 +24,20 @@
           </div>
         </div>
       </div>
+      <div class="box-header">
+        <h3 class="box-title">
+          Valor de los límites de control
+        </h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col col-md-8">
+            <div class="form-group">
+            <%= f.number_field(:control, value: 2, min: 1, :class=>"form-control") %>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="box-footer">
         <small>*Recuerde verificar todos los modelos antes de presionar aceptar</small>
       </div>

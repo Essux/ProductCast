@@ -71,10 +71,30 @@ class ForecastSetsController < ApplicationController
     for forecast in execution.forecasts
       data[forecast.date] = forecast.sales
     end
-    data
+    pew = [{name: "Proyección", data: data}]
+    pew
   end
 
-  helper_method :plotData
+  # Método usado en la vista para organizar los datos para graficarlos
+  def plotData2 execution
+    # Se crea un hash fecha => ventas
+    data2 = {}
+    datal = {}
+    datar = {}
+    c = execution.forecast_set.control
+    for track in execution.tracking_signals
+      data2[track.date] = track.signal
+      datal[track.date] = c
+      datar[track.date] = -c
+    end
+    pew = [{name: "Señal de rastreo", data: data2},
+    {name: "LSC", data: datal, library: {radius: 0}},
+    {name: "LIC", data: datar, library: {radius: 0}}
+    ]
+    pew
+  end
+
+  helper_method :plotData, :plotData2
 private
 
     def forecast_set_models
@@ -82,7 +102,7 @@ private
     end
 
     def forecast_set_params
-      params.require(:forecast_set).permit(:forecast_amount).tap { |x|
+      params.require(:forecast_set).permit(:forecast_amount, :control).tap { |x|
         x[:product_id] = params[:product_id]
         x[:model_ids] = params[:model_ids]
       }

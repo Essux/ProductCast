@@ -37,7 +37,10 @@ tbody td, thead th {
         <h3 class="box-title"><%= Model.find(execution.model_id).name %></h3>
       </div>
       <div class="box-body">
-          <%= line_chart plotData(execution), width: "800px" %>
+          <%= line_chart plotData(execution), width: "800px", colors: ["purple"] %>
+      </div>
+      <div class="box-body">
+          <%= line_chart plotData2(execution), width: "800px", curve: false, colors: ["blue", "red", "red"] %>
       </div>
       <div class="box-footer">
               <div class="box-header">
