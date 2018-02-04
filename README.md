@@ -1,6 +1,6 @@
 # ProductCast
 
-A spanish web application for forecasting product demand based on time series analysis models.
+A web application for forecasting product demand based on time series analysis models. (Only available in spanish)
 
 ## How to run
 
