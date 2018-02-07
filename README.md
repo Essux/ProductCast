@@ -1,24 +1,25 @@
-# README
+# ProductCast
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application for forecasting product demand based on time series analysis models. (Only available in spanish)
 
-Things you may want to cover:
+## Authors
 
-* Ruby version
+* Juan Manuel Ciro Restrepo
+* Juan José Suárez Estrada
+* Luis Miguel Arroyave Quiñones
+* Sebastian Patiño Barrientos
 
-* System dependencies
+## How to run
 
-* Configuration
+* Make sure you have at least Ruby 2.4, Ruby on Rails 5.1 and PostgreSQL installed
 
-* Database creation
+* Use rails bundle install to install dependencies
 
-* Database initialization
+* Start a local server with rails server
 
-* How to run the test suite
+* Go to http://localhost:3000 to use it
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Live version
 
-* ...
+For a live version go to http://product-cast.herokuapp.com/
